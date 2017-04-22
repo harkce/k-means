@@ -4,6 +4,7 @@ var c = [];
 var raw;
 var datalen;
 var classcount;
+var phpurl = "kmeans.php"
 
 $(document).ready(function() {
 	init()
@@ -29,7 +30,7 @@ $('#1a').click(function() {
 	$.ajax({
 		type: "POST",
 		data: {type: 'countclass', filename: $('#dataset').val()},
-		url: "kmeans.php",
+		url: phpurl,
 		success: function(res) {
 			classcount = res;
 		}
@@ -37,7 +38,7 @@ $('#1a').click(function() {
 	$.ajax({
 		type: "POST",
 		data: {type: 'loadData',filename: $('#dataset').val()},
-		url: "kmeans.php",
+		url: phpurl,
 		success: function(res) {
 			res = JSON.parse(res);
 			raw = res;
@@ -79,7 +80,7 @@ $('#1c').click(function() {
 	$('#1c').text('Loading...')
 	$.ajax({
 		type: "POST",
-		url: "kmeans.php",
+		url: phpurl,
 		dataType: 'json',
 		data: {
 			dataset: JSON.stringify(raw),
@@ -147,7 +148,7 @@ $('#1f').click(function() {
 	$('#1f').text('Loading...')
 	$.ajax({
 		type: "POST",
-		url: "kmeans.php",
+		url: phpurl,
 		dataType: 'json',
 		data: {
 			dataset: JSON.stringify(raw),
