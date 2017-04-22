@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="plotly-latest.min.js"></script>
+</head>
+<body>
+<!-- <div class="container"> -->
+	<div class="jumbotron text-center">
+		<h3>Clustering with k-means</h3>
+		Muhammad Habib Fikri Sundayana - 1301144118
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="form-group text-center">
+					<label>Select Dataset</label>
+					<select id="dataset" class="form-control" name="filename" onchange="init()">
+						<option value="Aggregation">Aggregation</option>
+						<option value="Compound">Compound</option>
+						<option value="D31">D31 (a bit slow)</option>
+						<option value="flame">Flame</option>
+						<option value="jain">Jain</option>
+						<option value="pathbased">Pathbased</option>
+						<option value="R15">R15</option>
+						<option value="spiral">Spiral</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6 text-center">
+			<button id="1a" class="btn btn-primary">Load Dataset (1a)</button>
+			<div id="plot1"></div>
+		</div>
+		<div class="col-md-6 text-center" id="firstrow">
+			<button id="1c"  class="btn btn-primary" disabled>Run k-Means (1c)</button>
+			<div id="plot2"></div>
+			<span id="sse"></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="jumbotron" id="1e">
+			<div class="container">
+				<p><h5><b>(1e)</b> Karena initial centroid yang di assign random, maka lokasi cluster yang dihasilkan berubah-ubah setiap k-means dijalankan. SSE yang dihasilkan berkisar antara 2700 - 3400 (atau lebih). Algoritma k-means berjalan setelah centroid tidak bergerak, atau SSE yang dihasilkan lebih besar dari SSE sebelum centroid dipindahkan (artinya SSE memburuk).</h5></p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="secondrow">
+		<div class="col-md-6 text-center">
+			<button id="1d" class="btn btn-primary" disabled>Load Dataset (with actual cluster) (1d)</button>
+			<div id="plot3"></div>
+		</div>
+		<div class="col-md-6 text-center">
+			<button id="1f" class="btn btn-primary" disabled>Run k-Means (1f)</button>
+			<div id="plot4"></div>
+			<span id="sse2"></span>
+		</div>
+	</div>
+	<div class="row" id="thirdrow">
+		<div class="jumbotron" id="1gh">
+			<div class="container">
+				<p><h5><b>(1g)</b> Initial centroids dipilih secara random dari data yang merupakan cluster aslinya. Lokasi cluster yang dihasilkan hampir tidak berubah setiap kali algoritma k-means dijalankan. Algoritma k-means berjalan setelah centroid tidak bergerak, atau SSE yang dihasilkan lebih besar dari SSE sebelum centroid dipindahkan (artinya SSE memburuk).</h5></p>
+
+				<p><h5><b>(1h)</b> Secara visual dan SSE, k-means yang terbaik adalah yang initial centroids nya dipilih secara random dari data yang merupakan cluster aslinya (1f). Karena jarak initial centroids nya tidak terlalu jauh dengan cluster aslinya.</h5></p>
+			</div>
+		</div>
+	</div>
+<!-- </div> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
